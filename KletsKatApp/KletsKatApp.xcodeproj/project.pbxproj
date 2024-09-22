@@ -10,7 +10,6 @@
 		4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0579322C9EE3F300CB9C2E /* ContentView.swift */; };
 		4A0579352C9EE3F600CB9C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0579342C9EE3F600CB9C2E /* Assets.xcassets */; };
 		4A0579382C9EE3F600CB9C2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */; };
-		4ABE552D2CA0755B00458F2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE552C2CA0755B00458F2F /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +17,6 @@
 		4A0579322C9EE3F300CB9C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4A0579342C9EE3F600CB9C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4ABE552C2CA0755B00458F2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = KletsKatApp/Views/LoginView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 		4ABE55302CA079D500458F2F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4ABE552C2CA0755B00458F2F /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,7 +158,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ABE552D2CA0755B00458F2F /* LoginView.swift in Sources */,
 				4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
