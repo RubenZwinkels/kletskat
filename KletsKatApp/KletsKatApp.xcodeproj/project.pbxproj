@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A0579312C9EE3F300CB9C2E /* KletsKatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0579302C9EE3F300CB9C2E /* KletsKatAppApp.swift */; };
 		4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0579322C9EE3F300CB9C2E /* ContentView.swift */; };
 		4A0579352C9EE3F600CB9C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0579342C9EE3F600CB9C2E /* Assets.xcassets */; };
 		4A0579382C9EE3F600CB9C2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */; };
+		4ABE552D2CA0755B00458F2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE552C2CA0755B00458F2F /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A05792D2C9EE3F300CB9C2E /* KletsKatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KletsKatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A0579302C9EE3F300CB9C2E /* KletsKatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KletsKatAppApp.swift; sourceTree = "<group>"; };
 		4A0579322C9EE3F300CB9C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4A0579342C9EE3F600CB9C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4ABE552C2CA0755B00458F2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = KletsKatApp/Views/LoginView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,9 @@
 		4A05792F2C9EE3F300CB9C2E /* KletsKatApp */ = {
 			isa = PBXGroup;
 			children = (
-				4A0579302C9EE3F300CB9C2E /* KletsKatAppApp.swift */,
+				4ABE55332CA079FF00458F2F /* Controller */,
+				4ABE55312CA079EB00458F2F /* Model */,
+				4ABE55302CA079D500458F2F /* View */,
 				4A0579322C9EE3F300CB9C2E /* ContentView.swift */,
 				4A0579342C9EE3F600CB9C2E /* Assets.xcassets */,
 				4A0579362C9EE3F600CB9C2E /* Preview Content */,
@@ -65,6 +67,28 @@
 				4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4ABE55302CA079D500458F2F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4ABE552C2CA0755B00458F2F /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4ABE55312CA079EB00458F2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4ABE55332CA079FF00458F2F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABE552D2CA0755B00458F2F /* LoginView.swift in Sources */,
 				4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */,
-				4A0579312C9EE3F300CB9C2E /* KletsKatAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
