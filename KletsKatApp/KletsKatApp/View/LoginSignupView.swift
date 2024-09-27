@@ -4,11 +4,13 @@ struct LoginSignupView: View {
     @State private var animateGradient = false
     @State public var userMail: String = ""
     @State public var userPassWord: String = ""
-    public var userController = UserController()
+    @State private var registrationSuccess: Bool = false
+    @State private var errorMessage: String? = nil
+    private var userController = UserController()
     
     var body: some View {
         ZStack {
-            // achtergrond
+            // Achtergrond
             LinearGradient(gradient: Gradient(colors: [
                 animateGradient ? .primairy : .secondairy,
                 animateGradient ? .highlight : .primairy
@@ -27,6 +29,14 @@ struct LoginSignupView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                 
+                // Toon foutmelding als deze bestaat
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                }
+                
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Mail")
                         .font(.subheadline)
@@ -44,9 +54,9 @@ struct LoginSignupView: View {
                         .padding(.horizontal)
                 }
                                 
-                HStack{
+                HStack {
                     Button(action: {
-                        // Actie voor de knop
+                        // Actie voor de login-knop
                     }) {
                         Text("Login")
                             .font(.headline)
@@ -63,7 +73,17 @@ struct LoginSignupView: View {
                     .padding(.horizontal)
                     
                     Button(action: {
-                        userController.registerUser(email:userMail, password: userPassWord)
+                        userController.registerUser(username: userMail, password: userPassWord) { success, error in
+                            if success {
+                                registrationSuccess = true
+                                errorMessage = nil
+                                print("Registratie geslaagd!")
+                            } else {
+                                registrationSuccess = false
+                                errorMessage = error ?? "Onbekende fout."
+                                print("Registratie mislukt: \(errorMessage ?? "")")
+                            }
+                        }
                     }) {
                         Text("Maak account")
                             .font(.headline)
@@ -79,7 +99,6 @@ struct LoginSignupView: View {
                     )
                     .padding(.horizontal)
                 }
-                
             }
             .padding()
         }
