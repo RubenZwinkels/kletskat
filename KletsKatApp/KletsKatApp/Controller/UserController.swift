@@ -61,7 +61,7 @@ struct UserController {
     
     func registerUser(username: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         let url = "\(kkApiUrl)/auth/register"
-        let body = ["username": username, "password": password]
+        let body = ["email": username, "password": password]
         performRequest(urlString: url, method: "POST", body: body, completion: completion)
     }
     
@@ -74,5 +74,11 @@ struct UserController {
         } catch {
             print("Fout bij het decoderen van respons: \(error.localizedDescription)")
         }
+    }
+    
+    func loginUser(username: String, password: String, completion: @escaping (Bool, String?) -> Void) {
+        let url = "\(kkApiUrl)/auth/login"
+        let body = ["email": username, "password": password]
+        performRequest(urlString: url, method: "POST", body: body, completion: completion)
     }
 }

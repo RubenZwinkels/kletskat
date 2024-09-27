@@ -56,7 +56,18 @@ struct LoginSignupView: View {
                                 
                 HStack {
                     Button(action: {
-                        // Actie voor de login-knop
+                        userController.loginUser(username: userMail, password: userPassWord){
+                            success, error in
+                            if success {
+                                registrationSuccess = true
+                                errorMessage = nil
+                                print("Login geslaagd!")
+                            } else {
+                                registrationSuccess = false
+                                errorMessage = "Login mislukt. probeer opnieuw"
+                                print("Login mislukt. Probeer opniew")
+                            }
+                        }
                     }) {
                         Text("Login")
                             .font(.headline)
@@ -80,8 +91,8 @@ struct LoginSignupView: View {
                                 print("Registratie geslaagd!")
                             } else {
                                 registrationSuccess = false
-                                errorMessage = error ?? "Onbekende fout."
-                                print("Registratie mislukt: \(errorMessage ?? "")")
+                                errorMessage = "Registratie mislukt. probeer opnieuw"
+                                print("Registratie mislukt. Probeer opniew")
                             }
                         }
                     }) {
