@@ -1,36 +1,33 @@
 import Foundation
 
-class TokenManager {
-    private let tokenKey = "authToken"
-    private let tokenExpiryKey = "tokenExpiry"
-    private let tokenLifetime: Int = 3600000
+class TokenManager: ObservableObject {
+    let tokenKey = "authToken"
+    
+    @Published var isLoggedIn: Bool = true
+    
+    init() {
+        if getToken() == nil {
+            self.isLoggedIn = false
+            print("isloggedin: \(self.isLoggedIn)")
+        } else {
+            self.isLoggedIn = true
+            print("isloggedin: \(self.isLoggedIn)")
+        }
+    }
     
     func saveToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: tokenKey)
-        UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(tokenLifetime)), forKey: tokenExpiryKey)
-        print("Token opgeslagen: \(token)")
+        self.isLoggedIn = true
+        print("isloggedin: \(self.isLoggedIn)")
     }
     
-    func retrieveToken() -> String? {
-        let token = UserDefaults.standard.string(forKey: tokenKey)
-        print("Opgehaalde token: \(token ?? "Geen token gevonden")")
-        return token
+    func getToken() -> String? {
+        return UserDefaults.standard.string(forKey: tokenKey)
     }
     
-    func isTokenValid() -> Bool {
-        guard let expiryDate = UserDefaults.standard.object(forKey: tokenExpiryKey) as? Date else {
-            print("Geen vervaldatum gevonden.")
-            return false
-        }
-        
-        let isValid = Date() < expiryDate
-        print("Is token geldig? \(isValid)")
-        return isValid
-    }
-    
-    func isLoggedIn() -> Bool {
-        let loggedIn = retrieveToken() != nil && isTokenValid()
-        print("Is gebruiker ingelogd? \(loggedIn)")
-        return loggedIn
+    func removeToken() {
+        UserDefaults.standard.removeObject(forKey: tokenKey)
+        self.isLoggedIn = false
+        print("isloggedin: \(self.isLoggedIn)")
     }
 }
