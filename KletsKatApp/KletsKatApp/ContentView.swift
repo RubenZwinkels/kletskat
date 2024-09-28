@@ -9,24 +9,7 @@ struct ContentView: View {
                 LoginSignupView(tokenManager: tokenManager)
             }
             if tokenManager.isLoggedIn{
-                VStack {
-                    Text("Welkom! Je bent ingelogd.")
-                        .font(.title)
-                        .padding()
-                    
-                    Button(action: {
-                        tokenManager.removeToken()
-                    }) {
-                        Text("Uitloggen")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.red)
-                            .cornerRadius(10)
-                            .frame(maxWidth: .infinity)
-                    }
-                    .padding()
-                }
+                HomeView()
             }
         }
     }
