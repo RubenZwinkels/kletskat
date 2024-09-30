@@ -43,6 +43,7 @@ struct CatView: View {
                     .fill(catColor) // Kleur van het oor is gelijk aan de kleur van de kat
                     .frame(width: 50, height: 50)
                     .rotationEffect(.degrees(-30)) // Draai het linker oor
+
                 Spacer().frame(width: 134)
                 ear()
                     .fill(catColor) // Kleur van het oor is gelijk aan de kleur van de kat
@@ -53,15 +54,19 @@ struct CatView: View {
         }
     }
     
-    // Functie voor het tekenen van een oor
+    // functie voor het tekenen van een oortje
     func ear() -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: 25, y: 0)) // Beginpunt van het oor
-        path.addLine(to: CGPoint(x: 0, y: 50)) // Linker onderkant
-        path.addLine(to: CGPoint(x: 50, y: 50)) // Rechter onderkant
-        path.addLine(to: CGPoint(x: 25, y: 0)) // Terug naar beginpunt
-        return path
-    }
+            var path = Path()
+            // Control points voor lichte buiging naar buiten
+            let leftControlPoint = CGPoint(x: 10, y: 0)  // Controlepunt voor het linkeroor
+            let rightControlPoint = CGPoint(x: 40, y: 0) // Controlepunt voor het rechteroor
+            // Linker kant van het oor
+            path.move(to: CGPoint(x: 0, y: 50)) // Start onderaan
+            path.addQuadCurve(to: CGPoint(x: 25, y: 0), control: leftControlPoint) // Buiging naar links boven
+            path.addQuadCurve(to: CGPoint(x: 50, y: 50), control: rightControlPoint) // Buiging naar rechts beneden
+
+            return path
+        }
 }
 
 #Preview {
