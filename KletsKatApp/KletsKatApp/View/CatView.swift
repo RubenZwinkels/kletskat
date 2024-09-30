@@ -10,7 +10,7 @@ import Foundation
 
 struct CatView: View {
     var catColor: Color
-    var eyeColor: Color = .black // Toevoegen van een parameter voor oogkleur
+    var eyeColor: Color = .black
     
     var body: some View {
         // Hoofdje van de kat
@@ -40,17 +40,20 @@ struct CatView: View {
             // Oren
             HStack {
                 ear()
-                    .fill(catColor) // Kleur van het oor is gelijk aan de kleur van de kat
+                    .fill(catColor.opacity(0.6))
                     .frame(width: 50, height: 50)
-                    .rotationEffect(.degrees(-30)) // Draai het linker oor
+                    .overlay(ear().stroke(catColor, lineWidth: 10))
+                    .rotationEffect(.degrees(-35))
+
 
                 Spacer().frame(width: 134)
                 ear()
-                    .fill(catColor) // Kleur van het oor is gelijk aan de kleur van de kat
+                    .fill(catColor.opacity(0.6))
                     .frame(width: 50, height: 50)
-                    .rotationEffect(.degrees(30))
+                    .overlay(ear().stroke(catColor, lineWidth: 10))
+                    .rotationEffect(.degrees(35))
             }
-            .padding(.top, -90) // Zorg dat de oren boven het hoofdje verschijnen
+            .padding(.top, -90)
         }
     }
     
