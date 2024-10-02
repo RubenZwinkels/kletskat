@@ -11,9 +11,10 @@ struct CatView: View {
         ZStack {
             // Hoofd
             Ellipse()
+                .stroke(accentColor, lineWidth: 10)
                 .fill(catColor)
                 .frame(width: 220, height: 150)
-            
+
             // Ogen
             HStack {
                 ZStack {
@@ -30,30 +31,13 @@ struct CatView: View {
             }
             .padding(.horizontal, 37)
             .frame(width: 200)
-            
-            // Oren
-            HStack {
-                ear()
-                    .fill(catColor.opacity(0.6))
-                    .frame(width: 50, height: 50)
-                    .overlay(ear().stroke(catColor, lineWidth: 10))
-                    .rotationEffect(.degrees(-35))
-                
-                Spacer().frame(width: 134)
-                ear()
-                    .fill(catColor.opacity(0.6))
-                    .frame(width: 50, height: 50)
-                    .overlay(ear().stroke(catColor, lineWidth: 10))
-                    .rotationEffect(.degrees(35))
-            }
-            .padding(.top, -90)
-            
+
             // Gezichtje
             VStack {
                 // Neusje en snorharen
                 HStack {
                     // Snorharen links
-                    VStack(spacing: 4) { // verticale ruimte tussen snorharen
+                    VStack(spacing: 4) {
                         wisker()
                             .stroke(accentColor, lineWidth: 2)
                             .frame(height: 2)
@@ -66,13 +50,13 @@ struct CatView: View {
                             .frame(height: 2)
                             .rotationEffect(.degrees(-10))
                     }
-                    .padding(.trailing, 10) // padding om ze naar binnen te doen
-                    
+                    .padding(.trailing, 10)
+
                     // Neusje
                     Ellipse()
                         .fill(accentColor)
                         .frame(width: 25, height: 15)
-                    
+
                     // Snorharen rechts
                     VStack(spacing: 4) {
                         wisker()
@@ -89,16 +73,46 @@ struct CatView: View {
                             .frame(height: 2)
                             .rotationEffect(.degrees(-10))
                             .scaleEffect(x: -1, y: 1)
-
                     }
-                    .padding(.leading, 10) // snorharen naar links
+                    .padding(.leading, 10)
                 }
+
+                // Mondje met twee halve cirkels
+                HStack {
+                    Spacer()
+                    halfCircle() // Linker halve cirkel
+                        .stroke(accentColor, lineWidth: 5)
+                    halfCircle() // Rechter halve cirkel
+                        .stroke(accentColor, lineWidth: 5)
+                        .scaleEffect(x: -1, y: 1)
+                    Spacer()
+                }
+                .frame(width: 40) // Pas de breedte aan om ruimte tussen de cirkels te verminderen
             }
             .frame(width: 175)
-            .padding(.top, 80)
+            .padding(.top, 410)
+
+            // Oren
+            HStack {
+                ear()
+                    .stroke(accentColor, lineWidth: 10)
+                    .fill(catColor.opacity(0.6))
+                    .frame(width: 50, height: 50)
+                    .overlay(ear().stroke(catColor, lineWidth: 10))
+                    .rotationEffect(.degrees(-35))
+
+                Spacer().frame(width: 134)
+                ear()
+                    .stroke(accentColor, lineWidth: 10)
+                    .fill(catColor.opacity(0.6))
+                    .frame(width: 50, height: 50)
+                    .overlay(ear().stroke(catColor, lineWidth: 10))
+                    .rotationEffect(.degrees(35))
+            }
+            .padding(.top, -90)
         }
     }
-    
+
     // Functie voor het tekenen van een oortje
     func ear() -> Path {
         var path = Path()
@@ -109,7 +123,7 @@ struct CatView: View {
         path.addQuadCurve(to: CGPoint(x: 50, y: 50), control: rightControlPoint)
         return path
     }
-    
+
     // Aangepaste functie voor de snorharen
     func wisker() -> Path {
         var path = Path()
@@ -118,6 +132,17 @@ struct CatView: View {
             to: CGPoint(x: 30, y: 0),
             control: CGPoint(x: 15, y: -10)
         )
+        return path
+    }
+
+    // Functie voor het tekenen van een halve cirkel (op zijn kop)
+    func halfCircle() -> Path {
+        var path = Path()
+        path.addArc(center: CGPoint(x: 0, y: 0), // Gecentreerd voor de halve cirkel
+                    radius: 10, // Radius van de halve cirkel
+                    startAngle: Angle(degrees: 0), // Starten vanaf de bovenkant
+                    endAngle: Angle(degrees: 180), // Einde aan de onderkant
+                    clockwise: false) // Tegen de klok in
         return path
     }
 }
