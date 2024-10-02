@@ -20,7 +20,7 @@ public class Cat {
     private int bond; // op een schaal van 0-100
     private Personality personality;
 
-    
+
     public Cat(){}
 
     public Cat(CustomUser user, String color, String eyeColor, String name, int bond, Personality personality) {
