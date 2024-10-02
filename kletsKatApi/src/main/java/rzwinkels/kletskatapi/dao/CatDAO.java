@@ -18,4 +18,8 @@ public class CatDAO {
         Cat catModel = new Cat(user, cat.getColor(), cat.getEyeColor(), cat.getName(), cat.getBond(), cat.getPersonality());
         catRepository.save(catModel);
     }
+
+    public Cat fetchUsersCat(CustomUser user){
+        return catRepository.getCatByUser(user);
+    }
 }
