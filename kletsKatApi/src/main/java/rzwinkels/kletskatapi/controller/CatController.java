@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import rzwinkels.kletskatapi.dao.CatDAO;
 import rzwinkels.kletskatapi.dao.UserDAO;
 import rzwinkels.kletskatapi.dto.CatDTO;
+import rzwinkels.kletskatapi.model.Cat;
 import rzwinkels.kletskatapi.model.CustomUser;
 
 @RestController
@@ -31,7 +32,22 @@ public class CatController {
                     HttpStatus.NOT_FOUND, "User not found"
             );
         }
-        catDAO.updateCat(currentUser.getId(), cat);
+        catDAO.updateCurrentUsersCat(cat);
         return ResponseEntity.ok("Kat opgeslagen");
+    }
+
+    @GetMapping
+    public ResponseEntity<CatDTO> getCatByUser(){
+        CustomUser currentuser = null;
+        try {
+            currentuser = userDAO.getCurrentUser();
+        } catch (Error e){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User not found"
+            );
+        }
+        Cat usersCat = catDAO.fetchUsersCat(currentuser);
+        CatDTO usersCatDTO = catDAO.convertCatToDTO(usersCat);
+        return ResponseEntity.ok(usersCatDTO);
     }
 }

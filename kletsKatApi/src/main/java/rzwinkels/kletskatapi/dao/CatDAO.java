@@ -29,16 +29,33 @@ public class CatDAO {
         return catRepository.getCatByUser(user);
     }
 
+    public CatDTO convertCatToDTO(Cat cat){
+        CatDTO catDTO = new CatDTO(cat.getColor(), cat.getEyeColor(), cat.getName(), cat.getBond(), cat.getPersonality());
+        return catDTO;
+    }
+
     public UUID getCatIdByUser() {
-        CustomUser currentUser = userdao.getCurrentUser();
-        Cat cat = catRepository.getCatByUser(currentUser);
-        return cat.getId();
+        try{
+            CustomUser currentUser = userdao.getCurrentUser();
+            Cat cat = catRepository.getCatByUser(currentUser);
+            return cat.getId();
+        } catch (NullPointerException e){
+            return null;
+        }
+
     }
 
     public void updateCat(UUID catId, CatDTO updatedCatData) {
-        Optional<Cat> optionalCat = catRepository.findById(catId);
+        if (catId == null){
+            System.out.println("nieuwe kat opgeslagen");
+            saveCat(updatedCatData, userdao.getCurrentUser());
+            return;
+        }
 
+        Optional<Cat> optionalCat = catRepository.findById(catId);
+        System.out.println("catid: " + catId);
         if (optionalCat.isPresent()) {
+            System.out.println("de kat is present");
             Cat catToUpdate = optionalCat.get();
             catToUpdate.setColor(updatedCatData.getColor());
             catToUpdate.setEyeColor(updatedCatData.getEyeColor());
@@ -48,8 +65,14 @@ public class CatDAO {
 
             catRepository.save(catToUpdate);
         } else {
+            System.out.println("nieuwe kat opslaan");
             saveCat(updatedCatData, userdao.getCurrentUser());
         }
+    }
+
+    public void updateCurrentUsersCat(CatDTO updatedCatData) {
+        UUID catId = getCatIdByUser();
+        updateCat(catId, updatedCatData);
     }
 
 }
