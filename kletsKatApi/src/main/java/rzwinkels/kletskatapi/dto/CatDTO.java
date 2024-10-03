@@ -5,28 +5,18 @@ import rzwinkels.kletskatapi.model.Personality;
 import java.util.UUID;
 
 public class CatDTO {
-    private UUID id;
     private String color; // hex
     private String eyeColor; // hex
     private String name;
     private int bond; // op een schaal van 0-100
     private Personality personality;
 
-    public CatDTO(UUID id, String color, String eyeColor, String name, int bond, Personality personality) {
-        this.id = id;
+    public CatDTO(String color, String eyeColor, String name, int bond, Personality personality) {
         this.color = color;
         this.eyeColor = eyeColor;
         this.name = name;
         this.bond = bond;
         this.personality = personality;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getColor() {

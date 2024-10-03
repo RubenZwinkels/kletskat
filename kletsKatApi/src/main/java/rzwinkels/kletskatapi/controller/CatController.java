@@ -1,10 +1,13 @@
 package rzwinkels.kletskatapi.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import rzwinkels.kletskatapi.dao.CatDAO;
 import rzwinkels.kletskatapi.dao.UserDAO;
+import rzwinkels.kletskatapi.dto.CatDTO;
+import rzwinkels.kletskatapi.model.CustomUser;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -16,5 +19,19 @@ public class CatController {
     public CatController(UserDAO userDAO, CatDAO catDAO) {
         this.userDAO = userDAO;
         this.catDAO = catDAO;
+    }
+
+    @PostMapping
+    public ResponseEntity<String> saveCat(@RequestBody CatDTO cat){
+        CustomUser currentUser = null;
+        try {
+            currentUser = userDAO.getCurrentUser();
+        } catch (Error e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User not found"
+            );
+        }
+        catDAO.updateCat(currentUser.getId(), cat);
+        return ResponseEntity.ok("Kat opgeslagen");
     }
 }

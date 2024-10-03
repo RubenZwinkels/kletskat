@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToOne;
 
 import java.util.UUID;
 
-@Entity(name = "Users")
+@Entity(name = "Cat")
 public class Cat {
     @Id
     @GeneratedValue
