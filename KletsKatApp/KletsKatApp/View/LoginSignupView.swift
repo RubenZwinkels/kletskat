@@ -60,7 +60,7 @@ struct LoginSignupView: View {
                             userController.loginUser(username: userMail, password: userPassWord){
                                 success, error in
                                 if success {
-                                    tokenManager.saveToken("mockedToken")
+                                    tokenManager.isLoggedIn = true
                                     errorMessage = nil
                                     print("Login geslaagd!")
                                 } else {
@@ -86,7 +86,7 @@ struct LoginSignupView: View {
                         Button(action: {
                             userController.registerUser(username: userMail, password: userPassWord) { success, error in
                                 if success {
-                                    tokenManager.saveToken("mockedToken")
+                                    tokenManager.isLoggedIn = true
                                     errorMessage = nil
                                     print("Registratie geslaagd!")
                                 } else {
