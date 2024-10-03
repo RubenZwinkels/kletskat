@@ -17,6 +17,10 @@
 		4ABE55352CA084FC00458F2F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE55342CA084FC00458F2F /* LoginSignupView.swift */; };
 		4ABE55372CA086CE00458F2F /* KletsKatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */; };
 		4ABE553A2CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ABE55392CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf */; };
+		4AF4C6FB2CAD67B000A265C6 /* CatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C6FA2CAD67AB00A265C6 /* CatController.swift */; };
+		4AF4C6FD2CAD68B100A265C6 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C6FC2CAD68AD00A265C6 /* CatModel.swift */; };
+		4AF4C6FF2CAD707700A265C6 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C6FE2CAD706D00A265C6 /* Personality.swift */; };
+		4AF4C7012CAD73EC00A265C6 /* CatStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C7002CAD73E800A265C6 /* CatStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		4ABE55342CA084FC00458F2F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
 		4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KletsKatAppApp.swift; sourceTree = "<group>"; };
 		4ABE55392CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4AF4C6FA2CAD67AB00A265C6 /* CatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatController.swift; sourceTree = "<group>"; };
+		4AF4C6FC2CAD68AD00A265C6 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
+		4AF4C6FE2CAD706D00A265C6 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
+		4AF4C7002CAD73E800A265C6 /* CatStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 				4ABE55312CA079EB00458F2F /* Model */,
 				4ABE55302CA079D500458F2F /* View */,
 				4A0579322C9EE3F300CB9C2E /* ContentView.swift */,
+				4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */,
 				4A0579342C9EE3F600CB9C2E /* Assets.xcassets */,
 				4A0579362C9EE3F600CB9C2E /* Preview Content */,
 			);
@@ -88,7 +97,6 @@
 				4A1D53BE2CA835090091CACE /* CatView.swift */,
 				4A1D53BC2CA833EF0091CACE /* HomeView.swift */,
 				4ABE55342CA084FC00458F2F /* LoginSignupView.swift */,
-				4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,6 +104,9 @@
 		4ABE55312CA079EB00458F2F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AF4C7002CAD73E800A265C6 /* CatStruct.swift */,
+				4AF4C6FE2CAD706D00A265C6 /* Personality.swift */,
+				4AF4C6FC2CAD68AD00A265C6 /* CatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,6 +114,7 @@
 		4ABE55332CA079FF00458F2F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4AF4C6FA2CAD67AB00A265C6 /* CatController.swift */,
 				4A78560B2CA6AD44004AA26D /* TokenManager.swift */,
 				4A76E87D2CA176F400132615 /* UserController.swift */,
 			);
@@ -188,10 +200,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF4C7012CAD73EC00A265C6 /* CatStruct.swift in Sources */,
+				4AF4C6FD2CAD68B100A265C6 /* CatModel.swift in Sources */,
 				4ABE55352CA084FC00458F2F /* LoginSignupView.swift in Sources */,
 				4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */,
+				4AF4C6FB2CAD67B000A265C6 /* CatController.swift in Sources */,
 				4A1D53BF2CA8350D0091CACE /* CatView.swift in Sources */,
 				4A78560C2CA6AD4D004AA26D /* TokenManager.swift in Sources */,
+				4AF4C6FF2CAD707700A265C6 /* Personality.swift in Sources */,
 				4A1D53BD2CA833F50091CACE /* HomeView.swift in Sources */,
 				4A76E87E2CA1770800132615 /* UserController.swift in Sources */,
 				4ABE55372CA086CE00458F2F /* KletsKatAppApp.swift in Sources */,

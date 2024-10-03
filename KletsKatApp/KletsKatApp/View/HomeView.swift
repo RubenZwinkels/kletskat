@@ -8,9 +8,15 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View{
+    @ObservedObject var catController = CatController.shared
     
     var body: some View{
-        Text("dit is het homescherm")
+        ZStack{
+            Color.background.ignoresSafeArea() //achtergrond
+            VStack{
+                CatView(catColor: catController.catModel.color).padding(.bottom, 100)
+            }
+        }
     }
     
 }

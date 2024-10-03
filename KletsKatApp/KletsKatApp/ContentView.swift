@@ -5,6 +5,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Button("log uit"){
+                tokenManager.removeToken()
+            }
             if !tokenManager.isLoggedIn {
                 LoginSignupView(tokenManager: tokenManager)
             }
