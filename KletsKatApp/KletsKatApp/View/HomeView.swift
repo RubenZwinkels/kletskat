@@ -14,7 +14,8 @@ struct HomeView: View{
         ZStack{
             Color.background.ignoresSafeArea() //achtergrond
             VStack{
-                CatView(catColor: catController.catModel.color).padding(.bottom, 100)
+                Text("dummy text").padding(.top, 200)
+                CatView(catColor: catController.catModel.color, facePaddingOffset: -100)
             }
         }
     }

@@ -5,6 +5,7 @@ struct CatView: View {
     var catColor: Color
     var eyeColor: Color = .black
     var accentColor: Color = Color(red: 87/255, green: 86/255, blue: 86/255)
+    var facePaddingOffset: Double
 
     var body: some View {
         // Hoofdje van de kat
@@ -17,17 +18,13 @@ struct CatView: View {
 
             // Ogen
             HStack {
-                ZStack {
                     Circle()
                         .fill(eyeColor)
                         .frame(width: 35)
-                }
                 Spacer()
-                ZStack {
                     Circle()
                         .fill(eyeColor)
                         .frame(width: 35)
-                }
             }
             .padding(.horizontal, 37)
             .frame(width: 200)
@@ -89,8 +86,8 @@ struct CatView: View {
                 }
                 .frame(width: 40) // Pas de breedte aan om ruimte tussen de cirkels te verminderen
             }
-            .frame(width: 175)
-            .padding(.top, 410)
+            .padding(.top, 404.0 + facePaddingOffset)
+            .padding(.horizontal, 100)
 
             // Oren
             HStack {
@@ -148,5 +145,5 @@ struct CatView: View {
 }
 
 #Preview {
-    CatView(catColor: .orange)
+    CatView(catColor: .orange, facePaddingOffset: 0)
 }
