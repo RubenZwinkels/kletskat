@@ -5,8 +5,7 @@
 //  Created by Ruben Zwinkels on 02/10/2024.
 //
 
-enum Personality: String, Decodable {
-    case madMan = "madMan"
+enum Personality: String, Decodable, CaseIterable {
     case grumpy = "grumpy"
     case happy = "happy"
     case lover = "lover"
@@ -15,8 +14,6 @@ enum Personality: String, Decodable {
     // Initializer om een string naar de juiste Personality enum waarde te converteren
     init?(from string: String) {
         switch string.lowercased() {
-        case "madman":
-            self = .madMan
         case "grumpy":
             self = .grumpy
         case "happy":

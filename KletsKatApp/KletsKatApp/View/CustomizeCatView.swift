@@ -55,7 +55,48 @@ struct CustomizeCatView: View {
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 20) // achtergrondje voor selectbox
-                        .fill(.primairy))
+                        .fill(.primairy)
+                )
+                
+                // persoonlijkheid kiezen
+                Text("Selecteer de persoonlijkheid van je kat")
+                    .font(.headline)
+                    .padding(.bottom, 10)
+
+                HStack {
+                    ForEach(Personality.allCases, id: \.self) { personality in
+                        Button(action: {
+                            catPersonality = personality //persoonlijkheid instellen
+                        }) {
+                            Text(personality.rawValue.capitalized)
+                                .font(.subheadline)
+                                .padding()
+                                    //geselecteerd
+                                .background(catPersonality == personality ? .primairy :  Color.gray.opacity(0.8)) // niet geselecteerd
+                                .cornerRadius(10)
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .padding(.top, 20)
+                // opslaan knop
+                Button(action: {
+                    catController.saveCat()
+                }) {
+                    Text("Opslaan")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                }
+                .background(.highlight)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white, lineWidth: 2)
+                )
+                .padding(.horizontal)
+                .padding(.top, 30)
             }
             .onAppear {
                 self.catColor = catController.catModel.color
