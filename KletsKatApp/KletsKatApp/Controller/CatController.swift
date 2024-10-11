@@ -31,7 +31,27 @@ class CatController: ObservableObject {
         }
     }
     
-    private func performRequest(urlString: String, method: String, body: [String: Any]? = nil, completion: @escaping (Bool, String?) -> Void) {
+    func saveCat(color: Color, eyeColor: Color, name: String, personality: Personality) {
+        // body maken
+        let catStruct = CatStruct(color: colorToString(color), eyeColor: colorToString(eyeColor), name: name, bond: self.catModel.bond, personality: personality.rawValue)
+        
+        do {
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(catStruct)
+            
+            // de request uitvoeren
+            performRequest(urlString: apiUrl, method: "POST", body: jsonData) { success, error in
+                if success {
+                    print("katgegevens opgeslagen")
+                } else {
+                    print("fout bij het opslaan van katgegevens: \(error ?? "")")
+                }
+            }
+        } catch {
+            print("Fout bij het encoderen van catStruct naar JSON: \(error.localizedDescription)")
+        }
+    }
+    private func performRequest(urlString: String, method: String, body: Data? = nil, completion: @escaping (Bool, String?) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(false, "Ongeldige URL")
             return
@@ -39,9 +59,13 @@ class CatController: ObservableObject {
         
         var request = URLRequest(url: url)
         request.httpMethod = method
-        print("token: \(token)")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
+        if let body = body {
+            request.httpBody = body
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type") // Stel de Content-Type in
+        }
+
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -98,21 +122,44 @@ class CatController: ObservableObject {
             print("Fout bij het decoderen van respons: \(error.localizedDescription)")
         }
     }
+    
+ 
 
-    // Functie om kleurstring naar Color om te zetten
+    // functie om naam om te zetten naar kleur model
     private func colorFromString(_ colorString: String) -> Color {
         switch colorString.lowercased() {
         case "orange":
             return .orange
-        case "black":
-            return .black
+        case "yellow":
+            return .yellow
         case "white":
             return .white
+        case "black":
+            return .black
         case "gray":
             return .gray
-        // Voeg hier andere kleuren toe zoals nodig
+        case "brown":
+            return .brown
         default:
-            return .clear // of een andere standaardkleur
+            return .clear
+        }
+    }
+    private func colorToString(_ color: Color) -> String {
+        switch color {
+        case .orange:
+            return "orange"
+        case .yellow:
+            return "yellow"
+        case .white:
+            return "white"
+        case .black:
+            return "black"
+        case .gray:
+            return "gray"
+        case .brown:
+            return "brown"
+        default:
+            return "unknown"
         }
     }
 }

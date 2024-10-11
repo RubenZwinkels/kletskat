@@ -81,7 +81,7 @@ struct CustomizeCatView: View {
                 .padding(.top, 20)
                 // opslaan knop
                 Button(action: {
-                    catController.saveCat()
+                    catController.saveCat(color: catColor, eyeColor: eyeColor, name: catName, personality: catPersonality)
                 }) {
                     Text("Opslaan")
                         .font(.headline)
