@@ -7,13 +7,15 @@ struct CustomizeCatView: View {
     @State private var eyeColor: Color = .black
     @State private var catName: String = "Simba"
     @State private var catPersonality: Personality = .happy
+    @State private var isNavigate: Bool = false // state om terug te navigeren naar home
+    @State private var errorMessage: String? // State voor foutmelding
     
     let availableCatColors: [Color] = [.orange, .yellow, .white, .black, .gray, .brown]
     
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea() // achtergrond
-            VStack {
+            VStack(spacing: 20) {
                 TextField("Voer de naam van je kat in", text: $catName) // kat naam
                     .font(.largeTitle)
                     .padding()
@@ -21,7 +23,6 @@ struct CustomizeCatView: View {
                     .background(.primairy.opacity(0.8))
                     .cornerRadius(10)
                     .padding(.horizontal)
-                    .padding(.bottom, 30)
 
                 // Kat tonen
                 CatView(catColor: catColor, eyeColor: eyeColor)
@@ -71,25 +72,39 @@ struct CustomizeCatView: View {
                             Text(personality.rawValue.capitalized)
                                 .font(.subheadline)
                                 .padding()
-                                    //geselecteerd
-                                .background(catPersonality == personality ? .primairy :  Color.gray.opacity(0.8)) // niet geselecteerd
+                                .background(catPersonality == personality ? .primairy : Color.gray.opacity(0.8))
                                 .cornerRadius(10)
                                 .foregroundColor(.white)
                         }
                     }
                 }
                 .padding(.top, 20)
+
+                // Error message display
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                }
+
                 // opslaan knop
                 Button(action: {
-                    catController.saveCat(color: catColor, eyeColor: eyeColor, name: catName, personality: catPersonality)
+                    catController.saveCat(color: catColor, eyeColor: eyeColor, name: catName, personality: catPersonality) { success, error in
+                        if success {
+                            isNavigate = true // Navigeren naar HomeView
+                            errorMessage = nil // Reset eventuele foutmelding
+                        } else {
+                            errorMessage = error ?? "Er is een onbekende fout opgetreden." // Toon foutmelding
+                        }
+                    }
                 }) {
                     Text("Opslaan")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                }
-                .background(.highlight)
+                }             .background(.highlight)
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -97,6 +112,12 @@ struct CustomizeCatView: View {
                 )
                 .padding(.horizontal)
                 .padding(.top, 30)
+
+                // Navigatie
+                NavigationLink(destination: HomeView(), isActive: $isNavigate) {
+                    EmptyView()
+                }
+                .hidden() // Verberg de NavigationLink zelf
             }
             .onAppear {
                 self.catColor = catController.catModel.color

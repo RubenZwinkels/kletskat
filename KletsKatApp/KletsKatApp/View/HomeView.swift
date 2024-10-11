@@ -9,8 +9,8 @@ struct HomeView: View {
             ZStack {
                 Color.background.ignoresSafeArea() // achtergrond
                 VStack {
-                    Text("Welkom terug!").padding(.top, 100)
-                    CatView(catColor: catController.catModel.color)
+                    Text("Welkom terug! \(catController.catModel.name) heeft op je gewacht!").padding(.top, 100)
+                    CatView(catColor: catController.catModel.color, eyeColor: catController.catModel.eyeColor)
                     
                     // pennetje om te navigeren naar customizeCatView
                     NavigationLink(destination: CustomizeCatView()) {
@@ -22,6 +22,7 @@ struct HomeView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

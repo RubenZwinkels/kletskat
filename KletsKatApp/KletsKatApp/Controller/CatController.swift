@@ -31,26 +31,41 @@ class CatController: ObservableObject {
         }
     }
     
-    func saveCat(color: Color, eyeColor: Color, name: String, personality: Personality) {
-        // body maken
-        let catStruct = CatStruct(color: colorToString(color), eyeColor: colorToString(eyeColor), name: name, bond: self.catModel.bond, personality: personality.rawValue)
+    func saveCat(color: Color, eyeColor: Color, name: String, personality: Personality, completion: @escaping (Bool, String?) -> Void) {
+        // Maak de body aan
+        let catStruct = CatStruct(
+            color: colorToString(color),
+            eyeColor: colorToString(eyeColor),
+            name: name,
+            bond: self.catModel.bond,
+            personality: personality.rawValue
+        )
         
         do {
             let encoder = JSONEncoder()
             let jsonData = try encoder.encode(catStruct)
             
-            // de request uitvoeren
+            // Voer de request uit
             performRequest(urlString: apiUrl, method: "POST", body: jsonData) { success, error in
                 if success {
-                    print("katgegevens opgeslagen")
+                    print("Katgegevens opgeslagen")
+                    // Werk het model bij
+                    self.catModel.color = color
+                    self.catModel.eyeColor = eyeColor
+                    self.catModel.personality = personality
+                    self.catModel.name = name
+                    completion(true, nil) // Succes
                 } else {
-                    print("fout bij het opslaan van katgegevens: \(error ?? "")")
+                    print("Fout bij het opslaan van katgegevens: \(error ?? "Onbekende fout")")
+                    completion(false, error) // Geef de fout terug
                 }
             }
         } catch {
             print("Fout bij het encoderen van catStruct naar JSON: \(error.localizedDescription)")
+            completion(false, "Fout bij het encoderen: \(error.localizedDescription)") // Geef een fout terug
         }
     }
+    
     private func performRequest(urlString: String, method: String, body: Data? = nil, completion: @escaping (Bool, String?) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(false, "Ongeldige URL")
