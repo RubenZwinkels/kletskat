@@ -4,17 +4,20 @@ struct ContentView: View {
     @ObservedObject var tokenManager = TokenManager()
     
     var body: some View {
-        VStack {
-            Button("log uit"){
-                tokenManager.removeToken()
-            }
-            if !tokenManager.isLoggedIn {
-                LoginSignupView(tokenManager: tokenManager)
-            }
-            if tokenManager.isLoggedIn{
-                HomeView()
+        NavigationStack{
+            VStack {
+                //            Button("log uit"){
+                //                tokenManager.removeToken()
+                //            }
+                if !tokenManager.isLoggedIn {
+                    LoginSignupView(tokenManager: tokenManager)
+                }
+                if tokenManager.isLoggedIn{
+                    HomeView()
+                }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
