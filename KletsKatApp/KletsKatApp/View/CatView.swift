@@ -91,7 +91,7 @@ struct CatView: View {
             // Oren
             HStack {
                 ear()
-                    .stroke(accentColor, lineWidth: 10)
+                    .stroke(accentColor, lineWidth: 15)
                     .fill(catColor.opacity(0.6))
                     .frame(width: 50, height: 50)
                     .overlay(ear().stroke(catColor, lineWidth: 10))
@@ -99,7 +99,7 @@ struct CatView: View {
 
                 Spacer().frame(width: 134)
                 ear()
-                    .stroke(accentColor, lineWidth: 10)
+                    .stroke(accentColor, lineWidth: 15)
                     .fill(catColor.opacity(0.6))
                     .frame(width: 50, height: 50)
                     .overlay(ear().stroke(catColor, lineWidth: 10))
