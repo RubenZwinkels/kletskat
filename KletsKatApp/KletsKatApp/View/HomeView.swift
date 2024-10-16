@@ -40,7 +40,11 @@ struct HomeView: View {
                         .padding(.vertical, 100)
                         .padding(.horizontal, 20)
                         .multilineTextAlignment(.center)
-
+                    // kletsen
+                    NavigationLink(destination: ChatView()){
+                        Text("klets met de kat")
+                    }
+                    // de kat
                     CatView(catColor: catController.catModel.color, eyeColor: catController.catModel.eyeColor)
                     
                     // Pennetje om te navigeren naar CustomizeCatView
