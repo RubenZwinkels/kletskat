@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,9 @@
 		4A62DF002CBFF1430097F28A /* env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A62DEFF2CBFF13B0097F28A /* env.swift */; };
 		4A62DF022CC00AD70097F28A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A62DF012CC00AD20097F28A /* ChatView.swift */; };
 		4A62DF042CC00B350097F28A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A62DF032CC00B310097F28A /* MessageView.swift */; };
+		4A62DF2C2CC194C80097F28A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62DF2B2CC194C80097F28A /* WidgetKit.framework */; };
+		4A62DF2E2CC194C80097F28A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62DF2D2CC194C80097F28A /* SwiftUI.framework */; };
+		4A62DF392CC194C90097F28A /* KletsKatWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4A62DF292CC194C80097F28A /* KletsKatWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A76E87E2CA1770800132615 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A76E87D2CA176F400132615 /* UserController.swift */; };
 		4A78560C2CA6AD4D004AA26D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78560B2CA6AD44004AA26D /* TokenManager.swift */; };
 		4ABE55352CA084FC00458F2F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE55342CA084FC00458F2F /* LoginSignupView.swift */; };
@@ -29,6 +32,30 @@
 		4AF4C7032CAEDDBD00A265C6 /* CustomizeCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4A62DF372CC194C90097F28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A0579252C9EE3F300CB9C2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A62DF282CC194C80097F28A;
+			remoteInfo = KletsKatWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A62DF3A2CC194C90097F28A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4A62DF392CC194C90097F28A /* KletsKatWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4A05792D2C9EE3F300CB9C2E /* KletsKatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KletsKatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0579322C9EE3F300CB9C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +67,9 @@
 		4A62DEFF2CBFF13B0097F28A /* env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = env.swift; sourceTree = "<group>"; };
 		4A62DF012CC00AD20097F28A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		4A62DF032CC00B310097F28A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		4A62DF292CC194C80097F28A /* KletsKatWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KletsKatWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A62DF2B2CC194C80097F28A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4A62DF2D2CC194C80097F28A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4A76E87D2CA176F400132615 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4A78560B2CA6AD44004AA26D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		4ABE55342CA084FC00458F2F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
@@ -52,12 +82,35 @@
 		4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4A62DF3D2CC194C90097F28A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4A62DF282CC194C80097F28A /* KletsKatWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4A62DF2F2CC194C80097F28A /* KletsKatWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4A62DF3D2CC194C90097F28A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = KletsKatWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		4A05792A2C9EE3F300CB9C2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4A62DEFE2CBFF0290097F28A /* OpenAI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A62DF262CC194C80097F28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A62DF2E2CC194C80097F28A /* SwiftUI.framework in Frameworks */,
+				4A62DF2C2CC194C80097F28A /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				4A05792F2C9EE3F300CB9C2E /* KletsKatApp */,
+				4A62DF2F2CC194C80097F28A /* KletsKatWidget */,
+				4A62DF2A2CC194C80097F28A /* Frameworks */,
 				4A05792E2C9EE3F300CB9C2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4A05792D2C9EE3F300CB9C2E /* KletsKatApp.app */,
+				4A62DF292CC194C80097F28A /* KletsKatWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +158,15 @@
 				4A0579372C9EE3F600CB9C2E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4A62DF2A2CC194C80097F28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A62DF2B2CC194C80097F28A /* WidgetKit.framework */,
+				4A62DF2D2CC194C80097F28A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4ABE55302CA079D500458F2F /* View */ = {
@@ -156,15 +221,39 @@
 				4A0579292C9EE3F300CB9C2E /* Sources */,
 				4A05792A2C9EE3F300CB9C2E /* Frameworks */,
 				4A05792B2C9EE3F300CB9C2E /* Resources */,
+				4A62DF3A2CC194C90097F28A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4A62DF382CC194C90097F28A /* PBXTargetDependency */,
 			);
 			name = KletsKatApp;
 			productName = KletsKatApp;
 			productReference = 4A05792D2C9EE3F300CB9C2E /* KletsKatApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4A62DF282CC194C80097F28A /* KletsKatWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A62DF3E2CC194C90097F28A /* Build configuration list for PBXNativeTarget "KletsKatWidgetExtension" */;
+			buildPhases = (
+				4A62DF252CC194C80097F28A /* Sources */,
+				4A62DF262CC194C80097F28A /* Frameworks */,
+				4A62DF272CC194C80097F28A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4A62DF2F2CC194C80097F28A /* KletsKatWidget */,
+			);
+			name = KletsKatWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = KletsKatWidgetExtension;
+			productReference = 4A62DF292CC194C80097F28A /* KletsKatWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -173,11 +262,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					4A05792C2C9EE3F300CB9C2E = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					4A62DF282CC194C80097F28A = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -198,6 +290,7 @@
 			projectRoot = "";
 			targets = (
 				4A05792C2C9EE3F300CB9C2E /* KletsKatApp */,
+				4A62DF282CC194C80097F28A /* KletsKatWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -210,6 +303,13 @@
 				4A0579382C9EE3F600CB9C2E /* Preview Assets.xcassets in Resources */,
 				4ABE553A2CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf in Resources */,
 				4A0579352C9EE3F600CB9C2E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A62DF272CC194C80097F28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +339,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A62DF252CC194C80097F28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A62DF382CC194C90097F28A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A62DF282CC194C80097F28A /* KletsKatWidgetExtension */;
+			targetProxy = 4A62DF372CC194C90097F28A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4A0579392C9EE3F600CB9C2E /* Debug */ = {
@@ -419,6 +534,62 @@
 			};
 			name = Release;
 		};
+		4A62DF3B2CC194C90097F28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RTD4L5Q9M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KletsKatWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KletsKatWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = RZwinkels.KletsKatApp.KletsKatWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A62DF3C2CC194C90097F28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RTD4L5Q9M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KletsKatWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KletsKatWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = RZwinkels.KletsKatApp.KletsKatWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -436,6 +607,15 @@
 			buildConfigurations = (
 				4A05793C2C9EE3F600CB9C2E /* Debug */,
 				4A05793D2C9EE3F600CB9C2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A62DF3E2CC194C90097F28A /* Build configuration list for PBXNativeTarget "KletsKatWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A62DF3B2CC194C90097F28A /* Debug */,
+				4A62DF3C2CC194C90097F28A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
