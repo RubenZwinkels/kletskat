@@ -13,28 +13,37 @@ struct ChatView: View {
     @StateObject var chatController: ChatController = .init()
     @State var string: String = ""
     var body: some View {
-        VStack {
-            ScrollView {
-                ForEach(chatController.messages) {
-                    message in
-                    MessageView(message: message)
+        ZStack{
+            Color.background.ignoresSafeArea() // achtergrond
+            VStack {
+                ScrollView {
+                    ForEach(chatController.messages) {
+                        message in
+                        MessageView(message: message)
+                            .padding(5)
+                    }
+                }
+                Divider()
+                HStack {
+                    TextField("Message...", text: self.$string, axis: .vertical)
                         .padding(5)
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(15)
+                    Button {
+                        self.chatController.sendNewMessage(content: string)
+                        string = ""
+                    } label: {
+                        Image(systemName: "paperplane.circle.fill")
+                            .foregroundColor(.highlight)
+                            .font(.system(size: 30))
+                    }
                 }
+                .padding()
             }
-            Divider()
-            HStack {
-                TextField("Message...", text: self.$string, axis: .vertical)
-                    .padding(5)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                Button {
-                    self.chatController.sendNewMessage(content: string)
-                    string = ""
-                } label: {
-                    Image(systemName: "paperplane")
-                }
-            }
-            .padding()
         }
     }
+}
+
+#Preview {
+    ChatView(string: "lorum ipsum")
 }
