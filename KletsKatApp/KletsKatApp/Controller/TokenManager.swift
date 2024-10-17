@@ -8,17 +8,14 @@ class TokenManager: ObservableObject {
     init() {
         if getToken() == nil {
             self.isLoggedIn = false
-            print("isloggedin: \(self.isLoggedIn)")
         } else {
             self.isLoggedIn = true
-            print("isloggedin: \(self.isLoggedIn)")
         }
     }
     
     func saveToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: tokenKey)
         self.isLoggedIn = true
-        print("isloggedin: \(self.isLoggedIn)")
     }
     
     func getToken() -> String? {
@@ -28,6 +25,5 @@ class TokenManager: ObservableObject {
     func removeToken() {
         UserDefaults.standard.removeObject(forKey: tokenKey)
         self.isLoggedIn = false
-        print("isloggedin: \(self.isLoggedIn)")
     }
 }
