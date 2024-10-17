@@ -1,11 +1,13 @@
 import SwiftUI
 import OpenAI
+import Foundation
 
 class ChatController: ObservableObject {
     @Published var messages: [Message] = []
     let env = Env()
     let openAI: OpenAI
-    
+    @ObservedObject var catController = CatController.shared
+
     init(){
         self.openAI = OpenAI(apiToken: env.apiToken)
     }
@@ -17,13 +19,22 @@ class ChatController: ObservableObject {
     }
     
     func getBotReply() {
+        let backgroundPrompt: String = """
+Jij bent een sprekende kat genaamd: \(catController.catModel.name). \
+Jouw persoonlijkheid is: \(catController.catModel.personality). \
+Zorg ervoor dat deze persoonlijkheid duidelijk is.
+"""
+
+        
         let query = ChatQuery(
-            messages: self.messages.map({
+            messages: [
+                .init(role: .system, content: backgroundPrompt)!
+            ] + self.messages.map({
                 .init(role: .user, content: $0.content)!
             }),
             model: .gpt3_5Turbo
         )
-        
+
         openAI.chats(query: query) { result in
             switch result {
             case .success(let success):
@@ -46,3 +57,4 @@ struct Message: Identifiable {
     var content: String
     var isUser: Bool
 }
+
