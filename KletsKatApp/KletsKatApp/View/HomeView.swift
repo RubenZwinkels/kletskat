@@ -40,20 +40,25 @@ struct HomeView: View {
                         .padding(.vertical, 100)
                         .padding(.horizontal, 20)
                         .multilineTextAlignment(.center)
-                    // kletsen
-                    NavigationLink(destination: ChatView()){
-                        Text("klets met de kat")
-                    }
                     // de kat
                     CatView(catColor: catController.catModel.color, eyeColor: catController.catModel.eyeColor)
-                    
-                    // Pennetje om te navigeren naar CustomizeCatView
-                    NavigationLink(destination: CustomizeCatView()) {
-                        Image(systemName: "pencil.circle.fill")
-                            .font(.system(size: 40))
-                            .foregroundColor(.highlight)
+                    // acties
+                    HStack{
+                        // kletsen
+                        NavigationLink(destination: ChatView()){
+                            Image(systemName: "paperplane.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundColor(.highlight)
+                        }
+                        
+                        // Pennetje om te navigeren naar CustomizeCatView
+                        NavigationLink(destination: CustomizeCatView()) {
+                            Image(systemName: "pencil.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundColor(.highlight)
+                        }
                     }
-                    .padding(.top, 20)
+                    
                 }
             }
         }
