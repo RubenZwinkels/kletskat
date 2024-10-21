@@ -1,84 +1,82 @@
-//
-//  KletsKatWidget.swift
-//  KletsKatWidget
-//
-//  Created by Ruben Zwinkels on 17/10/2024.
-//
-
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+
+struct KletskatWidgetEntry: TimelineEntry {
+    let date: Date
+    let catModel: CatModel?
+}
+
+
+struct KletskatWidgetProvider: TimelineProvider {
+    func placeholder(in context: Context) -> KletskatWidgetEntry {
+        KletskatWidgetEntry(date: Date(), catModel: nil)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+    func getSnapshot(in context: Context, completion: @escaping (KletskatWidgetEntry) -> Void) {
+        let entry = KletskatWidgetEntry(date: Date(), catModel: loadCatFromStorage())
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+    func getTimeline(in context: Context, completion: @escaping (Timeline<KletskatWidgetEntry>) -> Void) {
+        let entry = KletskatWidgetEntry(date: Date(), catModel: loadCatFromStorage())
+        let timeline = Timeline(entries: [entry], policy: .never)
         completion(timeline)
     }
 
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    private func loadCatFromStorage() -> CatModel? {
+        let defaults = UserDefaults(suiteName: "group.RZwinkels.KletsKatApp")
+        guard let name = defaults?.string(forKey: "catName"),
+              let colorString = defaults?.string(forKey: "catColor"),
+              let eyeColorString = defaults?.string(forKey: "catEyeColor"),
+              let personalityRaw = defaults?.string(forKey: "catPersonality"),
+              let personality = Personality(from: personalityRaw) else {
+            return nil
+        }
+
+        return CatModel(
+            color: CatController.colorFromString(colorString),
+            eyeColor: CatController.colorFromString(eyeColorString),
+            name: name,
+            bond: 0,
+            personality: personality
+        )
+    }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
-}
 
-struct KletsKatWidgetEntryView : View {
-    var entry: Provider.Entry
+struct KletskatWidgetEntryView: View {
+    var entry: KletskatWidgetProvider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        if let catModel = entry.catModel {
+            VStack {
+                Text("Cat's name: \(catModel.name)")
+                    .font(.headline)
+                WidgetCatView(catColor: catModel.color, eyeColor: catModel.eyeColor)
+                Text("Personality: \(catModel.personality.rawValue)")
+                    .font(.subheadline)
+            }
+            .padding()
+        } else {
+            Text("No cat data available")
+                .padding()
         }
     }
 }
+
 
 struct KletsKatWidget: Widget {
     let kind: String = "KletsKatWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                KletsKatWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                KletsKatWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+        StaticConfiguration(
+            kind: kind,
+            provider: KletskatWidgetProvider()
+        ) { entry in
+            KletskatWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("KletsKat Widget")
+        .description("Shows your customized cat.")
     }
-}
-
-#Preview(as: .systemSmall) {
-    KletsKatWidget()
-} timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
 }
