@@ -27,7 +27,7 @@ class CatController: ObservableObject {
             self.token = token
         } else {
             print("geen token kunnen ophalen")
-            self.token = ""
+            self.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJpc3MiOiJEdWNrIFN0dWRpb3MiLCJleHAiOjE3Mjk1NDM0NTMsImlhdCI6MTcyOTUyMTg1MywiZW1haWwiOiJydWJlbkBtYWlsLmNvbSJ9.O6C_Bzov2LK04klgHDWOu48nbN9CE2q0zd5Sfwu2pBM"
         }
         
         // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de api kat (dubbelop)
