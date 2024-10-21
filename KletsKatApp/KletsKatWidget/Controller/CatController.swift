@@ -26,6 +26,7 @@ class CatController: ObservableObject {
         if let token = tokenManager.getToken() {
             self.token = token
         } else {
+            print("geen token kunnen ophalen")
             self.token = ""
         }
         
@@ -86,6 +87,7 @@ class CatController: ObservableObject {
         
         var request = URLRequest(url: url)
         request.httpMethod = method
+        print("token: \(token)")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         if let body = body {

@@ -1,12 +1,10 @@
 import WidgetKit
 import SwiftUI
 
-
 struct KletskatWidgetEntry: TimelineEntry {
     let date: Date
     let catModel: CatModel?
 }
-
 
 struct KletskatWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> KletskatWidgetEntry {
@@ -14,36 +12,16 @@ struct KletskatWidgetProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (KletskatWidgetEntry) -> Void) {
-        let entry = KletskatWidgetEntry(date: Date(), catModel: loadCatFromStorage())
+        let entry = KletskatWidgetEntry(date: Date(), catModel: CatController.shared.catModel)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<KletskatWidgetEntry>) -> Void) {
-        let entry = KletskatWidgetEntry(date: Date(), catModel: loadCatFromStorage())
-        let timeline = Timeline(entries: [entry], policy: .never)
+        let entry = KletskatWidgetEntry(date: Date(), catModel: CatController.shared.catModel)
+        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 5))) // Update elke 5 minuten
         completion(timeline)
     }
-
-    private func loadCatFromStorage() -> CatModel? {
-        let defaults = UserDefaults(suiteName: "group.RZwinkels.KletsKatApp")
-        guard let name = defaults?.string(forKey: "catName"),
-              let colorString = defaults?.string(forKey: "catColor"),
-              let eyeColorString = defaults?.string(forKey: "catEyeColor"),
-              let personalityRaw = defaults?.string(forKey: "catPersonality"),
-              let personality = Personality(from: personalityRaw) else {
-            return nil
-        }
-
-        return CatModel(
-            color: CatController.colorFromString(colorString),
-            eyeColor: CatController.colorFromString(eyeColorString),
-            name: name,
-            bond: 0,
-            personality: personality
-        )
-    }
 }
-
 
 struct KletskatWidgetEntryView: View {
     var entry: KletskatWidgetProvider.Entry
@@ -64,7 +42,6 @@ struct KletskatWidgetEntryView: View {
         }
     }
 }
-
 
 struct KletsKatWidget: Widget {
     let kind: String = "KletsKatWidget"

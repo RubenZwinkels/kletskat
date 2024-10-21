@@ -1,14 +1,8 @@
-//
-//  TokenManager.swift
-//  KletsKatApp
-//
-//  Created by Ruben Zwinkels on 17/10/2024.
-//
-
 import Foundation
 
 class TokenManager: ObservableObject {
-    let tokenKey = "authToken"
+    private let tokenKey = "authToken"
+    private let appGroupID = "group.RZwinkels.KletKatApp"
     
     @Published var isLoggedIn: Bool = true
     
@@ -21,16 +15,21 @@ class TokenManager: ObservableObject {
     }
     
     func saveToken(_ token: String) {
-        UserDefaults.standard.set(token, forKey: tokenKey)
+        if let defaults = UserDefaults(suiteName: appGroupID) {
+            defaults.set(token, forKey: tokenKey)
+        }
         self.isLoggedIn = true
     }
     
     func getToken() -> String? {
-        return UserDefaults.standard.string(forKey: tokenKey)
+        let defaults = UserDefaults(suiteName: appGroupID)
+        return defaults?.string(forKey: tokenKey)
     }
     
     func removeToken() {
-        UserDefaults.standard.removeObject(forKey: tokenKey)
+        if let defaults = UserDefaults(suiteName: appGroupID) {
+            defaults.removeObject(forKey: tokenKey)
+        }
         self.isLoggedIn = false
     }
 }

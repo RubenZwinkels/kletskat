@@ -142,6 +142,7 @@ class CatController: ObservableObject {
     
     // Opslaan van catModel in UserDefaults
     private func saveCatInStorage() {
+        print("catcontroller - app: katgegevens opslaan in ud. katnaam: \(catModel.name)")
         let defaults = UserDefaults.standard
         defaults.set(catModel.name, forKey: "catName")
         defaults.set(CatController.colorToString(catModel.color), forKey: "catColor")
