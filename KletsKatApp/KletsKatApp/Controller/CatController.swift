@@ -3,6 +3,7 @@ import SwiftUI
 
 class CatController: ObservableObject {
     static let shared = CatController()
+    private let appGroupID = "group.RZwinkels.KletKatApp"
     
     private let apiUrl = "http://localhost:8080/api/cat"
     private var tokenManager = TokenManager()
@@ -21,7 +22,7 @@ class CatController: ObservableObject {
             self.token = ""
         }
         
-        // Ophalen van catModel vanuit UserDefaults, anders een nieuwe lege CatModel
+        // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de api kat (dubbelop)
         self.catModel = CatController.loadCatFromStorage() ?? CatModel()
         
         fetchCatData()
