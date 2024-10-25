@@ -22,6 +22,7 @@
 		4A62DF392CC194C90097F28A /* KletsKatWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4A62DF292CC194C80097F28A /* KletsKatWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A76E87E2CA1770800132615 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A76E87D2CA176F400132615 /* UserController.swift */; };
 		4A78560C2CA6AD4D004AA26D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78560B2CA6AD44004AA26D /* TokenManager.swift */; };
+		4A7862482CCC0506006EA9EE /* BondStatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7862472CCC04F9006EA9EE /* BondStatusBarView.swift */; };
 		4ABE55352CA084FC00458F2F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE55342CA084FC00458F2F /* LoginSignupView.swift */; };
 		4ABE55372CA086CE00458F2F /* KletsKatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */; };
 		4ABE553A2CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ABE55392CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf */; };
@@ -73,6 +74,7 @@
 		4A62DF3F2CC198660097F28A /* KletsKatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KletsKatApp.entitlements; sourceTree = "<group>"; };
 		4A76E87D2CA176F400132615 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4A78560B2CA6AD44004AA26D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		4A7862472CCC04F9006EA9EE /* BondStatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BondStatusBarView.swift; sourceTree = "<group>"; };
 		4ABE55342CA084FC00458F2F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
 		4ABE55362CA086CE00458F2F /* KletsKatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KletsKatAppApp.swift; sourceTree = "<group>"; };
 		4ABE55392CA08F2100458F2F /* RobotoSlab-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		4ABE55302CA079D500458F2F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4A7862472CCC04F9006EA9EE /* BondStatusBarView.swift */,
 				4A62DF032CC00B310097F28A /* MessageView.swift */,
 				4A62DF012CC00AD20097F28A /* ChatView.swift */,
 				4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */,
@@ -338,6 +341,7 @@
 				4AF4C6FF2CAD707700A265C6 /* Personality.swift in Sources */,
 				4A62DF042CC00B350097F28A /* MessageView.swift in Sources */,
 				4A1D53BD2CA833F50091CACE /* HomeView.swift in Sources */,
+				4A7862482CCC0506006EA9EE /* BondStatusBarView.swift in Sources */,
 				4A76E87E2CA1770800132615 /* UserController.swift in Sources */,
 				4ABE55372CA086CE00458F2F /* KletsKatAppApp.swift in Sources */,
 			);

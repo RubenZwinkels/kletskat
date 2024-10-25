@@ -37,11 +37,16 @@ struct HomeView: View {
                         .font(.title)
                         .background(.highlight)
                         .cornerRadius(15)
-                        .padding(.vertical, 100)
+                        .padding(.top, 30)
+                        .padding(.bottom, 20)
                         .padding(.horizontal, 20)
                         .multilineTextAlignment(.center)
+                    //de status
+                    BondStatusBarView(bondLevel: catController.catModel.bond)
+                        .padding(.bottom, 30)
                     // de kat
                     CatView(catColor: catController.catModel.color, eyeColor: catController.catModel.eyeColor)
+                        .padding(.top, 30)
                     // acties
                     HStack{
                         // kletsen
