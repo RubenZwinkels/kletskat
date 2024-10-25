@@ -59,6 +59,7 @@ class CatController: ObservableObject {
                     self.catModel.eyeColor = eyeColor
                     self.catModel.personality = personality
                     self.catModel.name = name
+                    self.catModel.bond = 0
                     completion(true, nil)
                 } else {
                     print("Fout bij het opslaan van katgegevens: \(error ?? "Onbekende fout")")

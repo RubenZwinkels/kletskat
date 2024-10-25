@@ -25,6 +25,7 @@ public class CatController {
     @PostMapping
     public ResponseEntity<String> saveCat(@RequestBody CatDTO cat){
         CustomUser currentUser = null;
+        cat.setBond(0);
         try {
             currentUser = userDAO.getCurrentUser();
         } catch (Error e) {
