@@ -169,6 +169,19 @@ class CatController: ObservableObject {
             personality: personality
         )
     }
+    
+    public func increaseCatBond(amount: Int) {
+        let original_bond = self.catModel.bond
+        if original_bond + amount >= 100 {
+            self.catModel.bond = 100
+            return
+        }
+        if original_bond + amount <= 0 {
+            self.catModel.bond = 0
+            return
+        }
+        self.catModel.bond = original_bond + amount
+    }
 
     // Statische methoden voor kleurconversie
     private static func colorFromString(_ colorString: String) -> Color {
