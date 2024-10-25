@@ -71,7 +71,6 @@
 		4A62DF2B2CC194C80097F28A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4A62DF2D2CC194C80097F28A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4A62DF3F2CC198660097F28A /* KletsKatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KletsKatApp.entitlements; sourceTree = "<group>"; };
-		4A62DF402CC198D90097F28A /* KletsKatWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KletsKatWidgetExtension.entitlements; sourceTree = "<group>"; };
 		4A76E87D2CA176F400132615 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4A78560B2CA6AD44004AA26D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		4ABE55342CA084FC00458F2F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		4AF4C6FE2CAD706D00A265C6 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
 		4AF4C7002CAD73E800A265C6 /* CatStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatStruct.swift; sourceTree = "<group>"; };
 		4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCatView.swift; sourceTree = "<group>"; };
+		4AFA290A2CC699470048928D /* KletsKatWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KletsKatWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -122,11 +122,11 @@
 		4A0579242C9EE3F300CB9C2E = {
 			isa = PBXGroup;
 			children = (
-				4A62DF402CC198D90097F28A /* KletsKatWidgetExtension.entitlements */,
 				4A05792F2C9EE3F300CB9C2E /* KletsKatApp */,
 				4A62DF2F2CC194C80097F28A /* KletsKatWidget */,
 				4A62DF2A2CC194C80097F28A /* Frameworks */,
 				4A05792E2C9EE3F300CB9C2E /* Products */,
+				4AFA290A2CC699470048928D /* KletsKatWidgetExtension.entitlements */,
 			);
 			sourceTree = "<group>";
 		};

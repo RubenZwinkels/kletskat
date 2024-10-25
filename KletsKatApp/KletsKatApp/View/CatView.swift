@@ -83,7 +83,7 @@ struct CatView: View {
                         .scaleEffect(x: -1, y: 1)
                     Spacer()
                 }
-                .frame(width: -20) // Pas de breedte aan om ruimte tussen de cirkels te verminderen
+                .frame(width: 40) // Pas de breedte aan om ruimte tussen de cirkels te verminderen
             }
             .frame(width: /*@START_MENU_TOKEN@*/250.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/)
             .offset(y: 33)
