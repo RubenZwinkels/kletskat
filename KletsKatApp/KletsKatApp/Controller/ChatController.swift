@@ -13,6 +13,7 @@ class ChatController: ObservableObject {
     }
     
     func sendNewMessage(content: String) {
+        catController.increaseCatBond(amount: 5)
         let userMessage = Message(content: content, isUser: true)
         self.messages.append(userMessage)
         getBotReply()
