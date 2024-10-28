@@ -22,22 +22,37 @@ class CatController: ObservableObject {
             self.token = ""
         }
         
-        // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de api kat (dubbelop)
+        // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de API kat (dubbelop)
         self.catModel = CatController.loadCatFromStorage() ?? CatModel()
         
-        fetchCatData()
+        //temp
+        setLastOpenedDateTo(daysAgo: 14)
+
+        // Start het initialisatieproces
+        initializeCatData()
     }
     
-    func fetchCatData() {
-        performRequest(urlString: apiUrl, method: "GET") { success, error in
+    private func initializeCatData() {
+        fetchCatData { success in
             if success {
-                print("Katgegevens succesvol opgehaald.")
-            } else {
-                print("Fout bij het ophalen van katgegevens: \(error ?? "")")
+                // pas de band alleen aan na een succesvolle API-aanroep
+                self.updateCatBondAfterInactivePeriod()
             }
         }
     }
+
     
+    func fetchCatData(completion: @escaping (Bool) -> Void) {
+        performRequest(urlString: apiUrl, method: "GET") { success, error in
+            if success {
+                print("Katgegevens succesvol opgehaald.")
+                completion(true)
+            } else {
+                print("Fout bij het ophalen van katgegevens: \(error ?? "")")
+                completion(false)
+            }
+        }
+    }
     func saveCat(color: Color, eyeColor: Color, name: String, personality: Personality, completion: @escaping (Bool, String?) -> Void) {
         let catStruct = CatStruct(
             color: CatController.colorToString(color),
@@ -183,6 +198,28 @@ class CatController: ObservableObject {
         }
         self.catModel.bond = original_bond + amount
     }
+    
+    private func updateCatBondAfterInactivePeriod() {
+        let defaults = UserDefaults.standard
+        let lastOpenedDate = defaults.object(forKey: "lastOpenedDate") as? Date ?? Date()
+        let currentDate = Date()
+
+        // Bereken het aantal dagen sinds de laatste keer dat de app werd geopend
+        let daysSinceLastOpened = Calendar.current.dateComponents([.day], from: lastOpenedDate, to: currentDate).day ?? 0
+        
+        // Verminder de band met een factor afhankelijk van de dagen
+        let calculatedReduction = daysSinceLastOpened * 2
+        let bondReduction = min(calculatedReduction, catModel.bond) // Max afname is de huidige bond
+
+        // Gebruik increaseCatBond met negatieve waarde om band te verminderen
+        increaseCatBond(amount: -bondReduction)
+        
+        // Werk lastOpenedDate bij naar de huidige datum
+        defaults.set(currentDate, forKey: "lastOpenedDate")
+        
+        // Debuggen en controleren van de nieuwe bondwaarde
+        print("updateCatBondAfterInactivePeriod - lastOpened \(daysSinceLastOpened) dagen geleden, bondReduction: \(bondReduction), nieuwe bond: \(catModel.bond)")
+    }
 
     // Statische methoden voor kleurconversie
     private static func colorFromString(_ colorString: String) -> Color {
@@ -207,5 +244,15 @@ class CatController: ObservableObject {
         case .brown: return "brown"
         default: return "unknown"
         }
+    }
+    
+    // voor testen
+    func setLastOpenedDateTo(daysAgo: Int) {
+        let defaults = UserDefaults.standard
+        let testDate = Calendar.current.date(byAdding: .day, value: -daysAgo, to: Date()) ?? Date()
+        defaults.set(testDate, forKey: "lastOpenedDate")
+        print("setLastOpenedDateTo: lastOpenedDate ingesteld op \(daysAgo) dagen geleden")
+                
+        print("laatste inlogdatum ingesteld op: \(daysAgo)")
     }
 }
