@@ -24,9 +24,6 @@ class CatController: ObservableObject {
         
         // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de API kat (dubbelop)
         self.catModel = CatController.loadCatFromStorage() ?? CatModel()
-        
-        //temp
-        setLastOpenedDateTo(daysAgo: 14)
 
         // Start het initialisatieproces
         initializeCatData()
@@ -53,6 +50,7 @@ class CatController: ObservableObject {
             }
         }
     }
+    
     func saveCat(color: Color, eyeColor: Color, name: String, personality: Personality, completion: @escaping (Bool, String?) -> Void) {
         let catStruct = CatStruct(
             color: CatController.colorToString(color),
@@ -84,6 +82,31 @@ class CatController: ObservableObject {
         } catch {
             print("Fout bij het encoderen van catStruct naar JSON: \(error.localizedDescription)")
             completion(false, "Fout bij het encoderen: \(error.localizedDescription)")
+        }
+    }
+    
+    func saveCat() {
+        let catStruct = CatStruct(
+            color: CatController.colorToString(catModel.color),
+            eyeColor: CatController.colorToString(catModel.eyeColor),
+            name: catModel.name,
+            bond: catModel.bond,
+            personality: catModel.personality.rawValue
+        )
+        
+        do {
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(catStruct)
+            
+            performRequest(urlString: apiUrl, method: "POST", body: jsonData) { success, error in
+                if success {
+                    print("Katgegevens opgeslagen")
+                } else {
+                    print("Fout bij het opslaan van katgegevens: \(error ?? "Onbekende fout")")
+                }
+            }
+        } catch {
+            print("Fout bij het encoderen van catStruct naar JSON: \(error.localizedDescription)")
         }
     }
     
@@ -197,6 +220,7 @@ class CatController: ObservableObject {
             return
         }
         self.catModel.bond = original_bond + amount
+        saveCat()
     }
     
     private func updateCatBondAfterInactivePeriod() {
