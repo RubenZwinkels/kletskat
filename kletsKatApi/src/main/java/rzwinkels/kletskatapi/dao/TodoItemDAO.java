@@ -3,10 +3,12 @@ package rzwinkels.kletskatapi.dao;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
+import rzwinkels.kletskatapi.dto.TodoItemDTO;
 import rzwinkels.kletskatapi.model.CustomUser;
 import rzwinkels.kletskatapi.model.TodoItem;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class TodoItemDAO {
@@ -18,7 +20,7 @@ public class TodoItemDAO {
         this.userDAO = userDAO;
     }
 
-    public List<TodoItem> getTodoItemCurrentUser(){
+    public List<TodoItemDTO> getTodoItemCurrentUser() {
         CustomUser user = this.userDAO.getCurrentUser();
         if (user == null) {
             throw new ResponseStatusException(
@@ -27,6 +29,21 @@ public class TodoItemDAO {
         }
         List<TodoItem> todoItems = this.todoItemRepository.getTodoItemsByUser(user);
 
-        return todoItems;
+        return toDTOList(todoItems);
+    }
+
+    public static TodoItemDTO toDTO(TodoItem todoItem) {
+        return new TodoItemDTO(
+                todoItem.getTitle(),
+                todoItem.getDescription(),
+                todoItem.isChecked(),
+                todoItem.getCreationDate()
+        );
+    }
+
+    public static List<TodoItemDTO> toDTOList(List<TodoItem> todoItems) {
+        return todoItems.stream()
+                .map(TodoItemDAO::toDTO)
+                .collect(Collectors.toList());
     }
 }
