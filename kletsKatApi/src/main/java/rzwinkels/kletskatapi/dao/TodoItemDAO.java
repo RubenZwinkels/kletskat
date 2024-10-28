@@ -7,6 +7,7 @@ import rzwinkels.kletskatapi.dto.TodoItemDTO;
 import rzwinkels.kletskatapi.model.CustomUser;
 import rzwinkels.kletskatapi.model.TodoItem;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ public class TodoItemDAO {
         todoItem.setTitle(todoItemDTO.title);
         todoItem.setDescription(todoItemDTO.description);
         todoItem.setChecked(todoItemDTO.checked);
-        todoItem.setCreationDate(todoItemDTO.creationDate);
+        todoItem.setCreationDate(LocalDate.now());
         todoItem.setUser(user);
 
         // opslaan
