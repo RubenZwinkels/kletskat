@@ -5,7 +5,7 @@ struct HomeView: View {
     @ObservedObject var catController = CatController.shared
     @ObservedObject var tokenManager = TokenManager()
     @State private var isNavigate: Bool = false // state om terug te navigeren naar ContentView
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -59,6 +59,12 @@ struct HomeView: View {
                         // Pennetje om te navigeren naar CustomizeCatView
                         NavigationLink(destination: CustomizeCatView()) {
                             Image(systemName: "pencil.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundColor(.highlight)
+                        }
+                        // todo's
+                        NavigationLink(destination: TodoItemsView()) {
+                            Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: 40))
                                 .foregroundColor(.highlight)
                         }
