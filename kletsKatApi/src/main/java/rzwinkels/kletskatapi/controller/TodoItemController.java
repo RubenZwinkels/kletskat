@@ -7,6 +7,7 @@ import rzwinkels.kletskatapi.dto.TodoItemDTO;
 import rzwinkels.kletskatapi.model.TodoItem;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -29,5 +30,11 @@ public class TodoItemController {
         this.todoItemDAO.saveTodoItem(todoItemDTO);
 
         return ResponseEntity.ok("todoItem opgeslagen");
+    }
+
+    @PutMapping
+    public ResponseEntity<String> toggleTodoItem(@RequestBody UUID id) {
+        todoItemDAO.toggleTodoItem(id);
+        return ResponseEntity.ok("todoItem getoggeld");
     }
 }
