@@ -6,8 +6,8 @@ struct TodoItemListView: View {
     var body: some View {
         NavigationView {
             List(todoController.todoItems) { item in
-                NavigationLink(destination: TodoItemView(todoItem: item)) {
-                    TodoItemView(todoItem: item)
+                NavigationLink(destination: TodoItemView(todoController: todoController, todoItem: item)) {
+                    TodoItemView(todoController: todoController, todoItem: item) // Geef de todoController door
                 }
             }
             .navigationTitle("Todo Items")
