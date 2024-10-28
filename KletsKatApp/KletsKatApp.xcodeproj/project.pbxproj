@@ -31,6 +31,10 @@
 		4AF4C6FF2CAD707700A265C6 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C6FE2CAD706D00A265C6 /* Personality.swift */; };
 		4AF4C7012CAD73EC00A265C6 /* CatStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C7002CAD73E800A265C6 /* CatStruct.swift */; };
 		4AF4C7032CAEDDBD00A265C6 /* CustomizeCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */; };
+		4AFDFFD12CCFDDD2004CA966 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDFFD02CCFDDC8004CA966 /* TodoController.swift */; };
+		4AFDFFD32CCFDDE9004CA966 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDFFD22CCFDDE5004CA966 /* TodoItem.swift */; };
+		4AFDFFD52CCFE1F0004CA966 /* TodoItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDFFD42CCFE1E9004CA966 /* TodoItemListView.swift */; };
+		4AFDFFD82CCFEC56004CA966 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDFFD72CCFEC49004CA966 /* TodoItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		4AF4C7002CAD73E800A265C6 /* CatStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatStruct.swift; sourceTree = "<group>"; };
 		4AF4C7022CAEDDAC00A265C6 /* CustomizeCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCatView.swift; sourceTree = "<group>"; };
 		4AFA290A2CC699470048928D /* KletsKatWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KletsKatWidgetExtension.entitlements; sourceTree = "<group>"; };
+		4AFDFFD02CCFDDC8004CA966 /* TodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoController.swift; sourceTree = "<group>"; };
+		4AFDFFD22CCFDDE5004CA966 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		4AFDFFD42CCFE1E9004CA966 /* TodoItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemListView.swift; sourceTree = "<group>"; };
+		4AFDFFD72CCFEC49004CA966 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -178,6 +186,8 @@
 		4ABE55302CA079D500458F2F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4AFDFFD72CCFEC49004CA966 /* TodoItemView.swift */,
+				4AFDFFD42CCFE1E9004CA966 /* TodoItemListView.swift */,
 				4A7862472CCC04F9006EA9EE /* BondStatusBarView.swift */,
 				4A62DF032CC00B310097F28A /* MessageView.swift */,
 				4A62DF012CC00AD20097F28A /* ChatView.swift */,
@@ -192,6 +202,7 @@
 		4ABE55312CA079EB00458F2F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AFDFFD22CCFDDE5004CA966 /* TodoItem.swift */,
 				4AF4C7002CAD73E800A265C6 /* CatStruct.swift */,
 				4AF4C6FE2CAD706D00A265C6 /* Personality.swift */,
 				4AF4C6FC2CAD68AD00A265C6 /* CatModel.swift */,
@@ -202,6 +213,7 @@
 		4ABE55332CA079FF00458F2F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4AFDFFD02CCFDDC8004CA966 /* TodoController.swift */,
 				4A62DEFA2CBE9EF60097F28A /* ChatController.swift */,
 				4AF4C6FA2CAD67AB00A265C6 /* CatController.swift */,
 				4A78560B2CA6AD44004AA26D /* TokenManager.swift */,
@@ -329,8 +341,10 @@
 			files = (
 				4AF4C7012CAD73EC00A265C6 /* CatStruct.swift in Sources */,
 				4AF4C6FD2CAD68B100A265C6 /* CatModel.swift in Sources */,
+				4AFDFFD32CCFDDE9004CA966 /* TodoItem.swift in Sources */,
 				4ABE55352CA084FC00458F2F /* LoginSignupView.swift in Sources */,
 				4A62DF002CBFF1430097F28A /* env.swift in Sources */,
+				4AFDFFD82CCFEC56004CA966 /* TodoItemView.swift in Sources */,
 				4A0579332C9EE3F300CB9C2E /* ContentView.swift in Sources */,
 				4AF4C6FB2CAD67B000A265C6 /* CatController.swift in Sources */,
 				4A1D53BF2CA8350D0091CACE /* CatView.swift in Sources */,
@@ -339,9 +353,11 @@
 				4A62DEFB2CBE9F030097F28A /* ChatController.swift in Sources */,
 				4AF4C7032CAEDDBD00A265C6 /* CustomizeCatView.swift in Sources */,
 				4AF4C6FF2CAD707700A265C6 /* Personality.swift in Sources */,
+				4AFDFFD52CCFE1F0004CA966 /* TodoItemListView.swift in Sources */,
 				4A62DF042CC00B350097F28A /* MessageView.swift in Sources */,
 				4A1D53BD2CA833F50091CACE /* HomeView.swift in Sources */,
 				4A7862482CCC0506006EA9EE /* BondStatusBarView.swift in Sources */,
+				4AFDFFD12CCFDDD2004CA966 /* TodoController.swift in Sources */,
 				4A76E87E2CA1770800132615 /* UserController.swift in Sources */,
 				4ABE55372CA086CE00458F2F /* KletsKatAppApp.swift in Sources */,
 			);

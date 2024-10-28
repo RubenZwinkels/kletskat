@@ -1,5 +1,6 @@
 package rzwinkels.kletskatapi.controller;
 
+import org.springframework.data.jpa.repository.query.JSqlParserUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rzwinkels.kletskatapi.dao.TodoItemDAO;
@@ -34,7 +35,9 @@ public class TodoItemController {
 
     @PutMapping
     public ResponseEntity<String> toggleTodoItem(@RequestBody UUID id) {
+        System.out.println("todo id to toggle: " + id);
         todoItemDAO.toggleTodoItem(id);
+        System.out.println("todoitem getoggeld");
         return ResponseEntity.ok("todoItem getoggeld");
     }
 }

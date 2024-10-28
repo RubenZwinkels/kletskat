@@ -63,7 +63,7 @@ struct HomeView: View {
                                 .foregroundColor(.highlight)
                         }
                         // todo's
-                        NavigationLink(destination: TodoItemsView()) {
+                        NavigationLink(destination: TodoItemListView()) {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: 40))
                                 .foregroundColor(.highlight)
