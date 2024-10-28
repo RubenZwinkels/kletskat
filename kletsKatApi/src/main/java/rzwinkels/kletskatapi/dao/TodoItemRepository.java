@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 import rzwinkels.kletskatapi.model.CustomUser;
 import rzwinkels.kletskatapi.model.TodoItem;
 
+import java.util.List;
+
 @Repository
 public interface TodoItemRepository extends JpaRepository<TodoItem, Long> {
-    TodoItem getTodoItemsByUser(CustomUser user);
+    List<TodoItem> getTodoItemsByUser(CustomUser user);
 }
