@@ -55,6 +55,7 @@ public class TodoItemDAO {
 
     public static TodoItemDTO toDTO(TodoItem todoItem) {
         return new TodoItemDTO(
+                todoItem.getId(),
                 todoItem.getTitle(),
                 todoItem.getDescription(),
                 todoItem.isChecked(),
