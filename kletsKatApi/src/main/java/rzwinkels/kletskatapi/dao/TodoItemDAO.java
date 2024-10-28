@@ -67,4 +67,12 @@ public class TodoItemDAO {
                 .map(TodoItemDAO::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public void toggleTodoItem(UUID id) {
+        TodoItem todoItem = todoItemRepository.findById(id);
+        todoItem.setChecked(!todoItem.isChecked());
+
+        //opslaan
+        TodoItem updatedTodoItem = todoItemRepository.save(todoItem);
+    }
 }
