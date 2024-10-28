@@ -69,4 +69,8 @@ public class TodoItem {
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
+
+    public void setUser(CustomUser user) {
+        this.user = user;
+    }
 }

@@ -8,6 +8,7 @@ import rzwinkels.kletskatapi.model.CustomUser;
 import rzwinkels.kletskatapi.model.TodoItem;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -28,8 +29,27 @@ public class TodoItemDAO {
             );
         }
         List<TodoItem> todoItems = this.todoItemRepository.getTodoItemsByUser(user);
-
         return toDTOList(todoItems);
+    }
+
+    public void saveTodoItem(TodoItemDTO todoItemDTO) {
+        CustomUser user = this.userDAO.getCurrentUser();
+        if (user == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User not found"
+            );
+        }
+
+        // maak een nieuw TodoItem object
+        TodoItem todoItem = new TodoItem();
+        todoItem.setTitle(todoItemDTO.title);
+        todoItem.setDescription(todoItemDTO.description);
+        todoItem.setChecked(todoItemDTO.checked);
+        todoItem.setCreationDate(todoItemDTO.creationDate);
+        todoItem.setUser(user);
+
+        // opslaan
+        TodoItem savedTodoItem = this.todoItemRepository.save(todoItem);
     }
 
     public static TodoItemDTO toDTO(TodoItem todoItem) {
