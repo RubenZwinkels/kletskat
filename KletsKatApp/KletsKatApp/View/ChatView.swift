@@ -5,7 +5,7 @@ import Foundation
 struct ChatView: View {
     @StateObject var chatController: ChatController = .init()
     @State private var string: String = ""
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,15 +21,15 @@ struct ChatView: View {
                     .onTapGesture {
                         hideKeyboard()
                     }
-
+                    
                     Divider()
-
+                    
                     HStack {
                         TextField("Message...", text: self.$string, axis: .vertical)
                             .padding(10)
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(15)
-
+                        
                         Button {
                             if !string.isEmpty {
                                 self.chatController.sendNewMessage(content: string)
@@ -57,6 +57,7 @@ struct ChatView: View {
             )
             .navigationBarTitle("Chat", displayMode: .inline)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
