@@ -5,7 +5,7 @@ struct TodoItem: Identifiable, Codable {
     var title: String
     var description: String
     var checked: Bool
-    var creationDate: String
+    var creationDate: String?
     
     // Initializer om de UUID automatisch te genereren
     init(title: String, description: String, checked: Bool = false, creationDate: String = ISO8601DateFormatter().string(from: Date())) {

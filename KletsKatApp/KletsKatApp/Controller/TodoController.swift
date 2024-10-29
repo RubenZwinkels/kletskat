@@ -57,6 +57,9 @@ class TodoController: ObservableObject {
 
     // Functie om een nieuw todo-item toe te voegen
     public func addTodoItem(_ item: TodoItem, completion: @escaping (Bool) -> Void) {
+        var item2 = item
+        item2.creationDate = nil
+        
         guard let url = URL(string: apiUrl) else {
             completion(false)
             return
@@ -69,7 +72,7 @@ class TodoController: ObservableObject {
         
         do {
             let encoder = JSONEncoder()
-            let jsonData = try encoder.encode(item)
+            let jsonData = try encoder.encode(item2)
             request.httpBody = jsonData
         } catch {
             print("Fout bij het encoderen van item: \(error)")
