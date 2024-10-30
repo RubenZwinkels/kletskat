@@ -66,21 +66,30 @@ struct TodoItemView: View {
                 
                 // Wanneer de gebruiker erop klikt, tonen we extra informatie
                 if bigMode {
-                    VStack(alignment: .leading) {
-                        Text("Beschrijving: \(todoItem.description)")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                            .padding(.top, 4)
-                        
-                        Text("Gemaakt op: \(todoItem.creationDate)")
-                            .font(.footnote)
-                            .foregroundColor(.black)
+                    VStack{
+                        //beschijving en datum
+                        VStack(alignment: .leading) {
+                            Text("Beschrijving: \(todoItem.description)")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                                .padding(.top, 4)
+                            
+                            Text("Gemaakt op: \(todoItem.creationDate!)")
+                                .font(.footnote)
+                                .foregroundColor(.black)
+                        }
+                        .padding(.top)
+                        .padding(.horizontal)
+                        .background(Color(.secondairy)) // Achtergrondkleur voor de beschrijving
+                        .cornerRadius(8)
+                        .shadow(radius: 1)
                     }
-                    .padding(.top)
-                    .padding(.horizontal)
-                    .background(Color(.secondairy)) // Achtergrondkleur voor de beschrijving
-                    .cornerRadius(8)
-                    .shadow(radius: 1)
+                    //delete knop
+                    Button("Verwijder", systemImage: "trash.circle.fill"){
+                        todoController.deleteTodoItem(todoItem.id){ success in
+                            print("todoitem verwijderd")
+                        }
+                    }
                 }
             }
             .padding(.horizontal) // Padding voor de hele view
