@@ -78,7 +78,7 @@ struct TodoItemView: View {
                     
                     Button(action: {
                         todoController.deleteTodoItem(todoItem.id) { success in
-                            DispatchQueue.main.async { // hierdoor wordt dit process uitgevoerd op main thread (anders crasht het)
+                            DispatchQueue.main.async {
                                 if success {
                                     presentationMode.wrappedValue.dismiss() // sluit de view
                                 }
@@ -86,6 +86,14 @@ struct TodoItemView: View {
                         }
                     }) {
                         Label("Verwijder", systemImage: "trash.circle.fill")
+                            .font(.headline) // Pas het lettertype aan
+                            .foregroundColor(.white) // Tekstkleur
+                            .padding() // Binnenmarges
+                            .background(Color.red) // Achtergrondkleur
+                            .cornerRadius(10) // Ronde hoeken
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2) // Schaduw
+                            .scaleEffect(1.0) // Normale grootte
+                            .animation(.easeInOut(duration: 0.2)) // Animatie voor het indrukken
                     }
                 }
             }
