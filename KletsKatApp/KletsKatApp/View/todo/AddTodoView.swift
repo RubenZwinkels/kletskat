@@ -33,7 +33,7 @@ struct AddTodoForm: View {
                         let newTodo = TodoItem(
                             title: title,
                             description: description,
-                            creationDate: Date().formatted() // Voeg de huidige datum toe
+                            creationDate: Date().formatted() // voeg de huidige datum toe
                         )
                         todoController.addTodoItem(newTodo) { success in
                             if success {
