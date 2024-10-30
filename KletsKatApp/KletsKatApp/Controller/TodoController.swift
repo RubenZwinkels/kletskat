@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import SwiftUI
 
 class TodoController: ObservableObject {
     private let appGroupID = "group.RZwinkels.KletKatApp"
@@ -7,6 +8,7 @@ class TodoController: ObservableObject {
     private var tokenManager = TokenManager()
     private let token: String
     @Published public var todoItems: [TodoItem] = []
+    @ObservedObject var catController = CatController.shared
 
     init(tokenManager: TokenManager = TokenManager()) {
         if let token = tokenManager.getToken() {
@@ -135,5 +137,6 @@ class TodoController: ObservableObject {
             }
         }
         task.resume()
+        catController.increaseCatBond(amount: 5)
     }
 }
