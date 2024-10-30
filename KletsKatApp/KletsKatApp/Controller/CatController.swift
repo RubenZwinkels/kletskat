@@ -23,7 +23,7 @@ class CatController: ObservableObject {
         }
         
         // Ophalen van catModel vanuit UserDefaults, vervolgens wordt het vervangen door de API kat (dubbelop)
-        self.catModel = CatController.loadCatFromStorage() ?? CatModel()
+        self.catModel = CatController.loadCatFromStorage() ?? CatModel(color: .orange, eyeColor: .black, name: "Pika")
 
         // Start het initialisatieproces
         initializeCatData()
@@ -176,6 +176,11 @@ class CatController: ObservableObject {
             print("Katgegevens succesvol opgehaald.")
         } catch {
             print("Fout bij het decoderen van respons: \(error.localizedDescription)")
+            //zodat er geen creepy cat verschijnt
+            self.catModel.name = "Pika"
+            self.catModel.color = .orange
+            self.catModel.eyeColor = .black
+            self.catModel.personality = .happy
         }
     }
     
