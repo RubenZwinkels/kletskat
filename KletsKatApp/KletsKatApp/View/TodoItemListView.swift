@@ -2,6 +2,9 @@ import SwiftUI
 
 struct TodoItemListView: View {
     @ObservedObject var todoController = TodoController()
+    @State private var isPresentingAddTodoForm = false
+    @State private var newTodoTitle: String = ""
+    @State private var newTodoDescription: String = ""
 
     var body: some View {
         NavigationView {
@@ -11,10 +14,28 @@ struct TodoItemListView: View {
                     NavigationLink(destination: TodoItemView(todoController: todoController, todoItem: item, bigMode: true)) {
                         TodoItemView(todoController: todoController, todoItem: item, bigMode: false)
                     }
+                    .listRowBackground(Color.background)
                 }
-                .listStyle(PlainListStyle()) // Dit kan helpen om de standaardlijststijl aan te passen
+                .listStyle(PlainListStyle())
                 .background(Color.background)
                 .navigationTitle("Todo Items")
+                .toolbar {
+                    // Toevoegen-knop in de navigatiebalk
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            isPresentingAddTodoForm = true
+                        }) {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.highlight)
+                        }
+                    }
+                }
+                .sheet(isPresented: $isPresentingAddTodoForm) {
+                    AddTodoForm(
+                        isPresented: $isPresentingAddTodoForm,
+                        todoController: todoController
+                    )
+                }
                 .onAppear {
                     todoController.fetchTodoItems { success in
                         if success {

@@ -38,6 +38,13 @@ struct AddTodoForm: View {
                         todoController.addTodoItem(newTodo) { success in
                             if success {
                                 print("Todo item succesvol toegevoegd.")
+                                todoController.fetchTodoItems { success in
+                                    if success {
+                                        print("Todo items succesvol opgehaald.")
+                                    } else {
+                                        print("Fout bij het ophalen van todo items.")
+                                    }
+                                }
                             } else {
                                 print("Fout bij het toevoegen van todo item.")
                             }

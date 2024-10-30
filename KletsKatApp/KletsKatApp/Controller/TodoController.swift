@@ -75,7 +75,7 @@ class TodoController: ObservableObject {
             let jsonData = try encoder.encode(item2)
             request.httpBody = jsonData
         } catch {
-            print("Fout bij het encoderen van item: \(error)")
+            print("Fout bij het encoderen van item id: \(item.id), \(error)")
             completion(false)
             return
         }
@@ -86,10 +86,15 @@ class TodoController: ObservableObject {
                 completion(false)
                 return
             }
+            DispatchQueue.main.async {
+                self.todoItems.append(item) // Direct toevoegen aan de lijst
+                completion(true)
+            }
+
             
             completion(true)
-            // Optioneel: update de lijst na toevoegen
-            self.fetchTodoItems { _ in }
+            // niet update nvan de api, maar lokaal de todoitem toevoegen aan array
+//            self.todoItems.append(item)
         }
         task.resume()
     }
