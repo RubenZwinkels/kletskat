@@ -12,4 +12,5 @@ import java.util.UUID;
 public interface TodoItemRepository extends JpaRepository<TodoItem, Long> {
     List<TodoItem> getTodoItemsByUser(CustomUser user);
     TodoItem findById(UUID uuid);
+    void deleteById(UUID uuid);
 }

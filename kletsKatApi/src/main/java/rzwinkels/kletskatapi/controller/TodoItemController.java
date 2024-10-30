@@ -35,9 +35,15 @@ public class TodoItemController {
 
     @PutMapping
     public ResponseEntity<String> toggleTodoItem(@RequestBody UUID id) {
-        System.out.println("todo id to toggle: " + id);
         todoItemDAO.toggleTodoItem(id);
         System.out.println("todoitem getoggeld");
         return ResponseEntity.ok("todoItem getoggeld");
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteTodoItem(@RequestBody UUID id) {
+        todoItemDAO.deleteTodoItem(id);
+
+        return ResponseEntity.ok("todoItem verwijderd");
     }
 }

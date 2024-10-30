@@ -1,5 +1,6 @@
 package rzwinkels.kletskatapi.dao;
 
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
@@ -7,6 +8,7 @@ import rzwinkels.kletskatapi.dto.TodoItemDTO;
 import rzwinkels.kletskatapi.model.CustomUser;
 import rzwinkels.kletskatapi.model.TodoItem;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -75,5 +77,17 @@ public class TodoItemDAO {
 
         //opslaan
         TodoItem updatedTodoItem = todoItemRepository.save(todoItem);
+    }
+
+    @Transactional
+    public void deleteTodoItem(UUID id) {
+        UUID currentUserId = this.userDAO.getCurrentUser().getId();
+        UUID todoItemUserId = this.todoItemRepository.findById(id).getUser().getId();
+        if (currentUserId != todoItemUserId){
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED, "Current user is not the owner of the todo item"
+            );
+        }
+        this.todoItemRepository.deleteById(id);
     }
 }
