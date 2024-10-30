@@ -46,7 +46,19 @@ struct TodoItemListView: View {
                     }
                 }
             }
+            .navigationBarItems(
+                leading: NavigationLink(destination: HomeView()) {
+                    HStack {
+                        Image(systemName: "arrow.backward.circle.fill")
+                            .foregroundColor(.highlight)
+                            .font(.system(size: 20))
+                        Text("Home")
+                            .foregroundColor(.highlight)
+                    }
+                }
+            )
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
