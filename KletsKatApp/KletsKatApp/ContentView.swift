@@ -2,18 +2,20 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var tokenManager = TokenManager()
+    @ObservedObject var catController = CatController.shared
     
     var body: some View {
         NavigationStack{
             VStack {
-                //            Button("log uit"){
-                //                tokenManager.removeToken()
-                //            }
                 if !tokenManager.isLoggedIn {
                     LoginSignupView(tokenManager: tokenManager)
                 }
                 if tokenManager.isLoggedIn{
-                    HomeView()
+                    if catController.catModel.name != "Unknown" {
+                        HomeView()
+                    } else {
+                        CustomizeCatView()
+                    }
                 }
             }
         }
