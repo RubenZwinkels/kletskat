@@ -48,10 +48,10 @@ struct ChatView: View {
                 leading: NavigationLink(destination: HomeView()) {
                     HStack {
                         Image(systemName: "arrow.backward.circle.fill")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.highlight)
                             .font(.system(size: 20))
                         Text("Home")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.highlight)
                     }
                 }
             )
